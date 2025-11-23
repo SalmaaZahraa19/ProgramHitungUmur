@@ -1,0 +1,36 @@
+<body> 
+  <h2>Program Hitung Umur</h2>  
+  <label for="tahun">Masukkan Tahun Lahir:</label>
+  <input type="number" id="tahun" placeholder="contoh: 2005">
+  <button onclick="AyoHitung()">Hitung</button>
+
+  <p id="hasil"></p>
+
+  <script>
+    function AyoHitung() {
+        let TahunInput = document.getElementById("tahun").value;
+        let TahunLahir = Number(TahunInput);
+        let TahunSekarang = new Date().getFullYear();
+        let hasil = document.getElementById("hasil");
+
+        // jika input kosong
+        if (TahunInput.trim() === "") {
+            hasil.innerHTML = "Tahun lahir tidak boleh kosong!";
+            hasil.style.color = "red";
+            return;
+        }
+
+        // jika tahun lebih besar dari tahun sekarang
+        if (TahunLahir > TahunSekarang) {
+            hasil.innerHTML = "Error: Tahun lahir tidak boleh lebih besar dari tahun sekarang!";
+            hasil.style.color = "red";
+            return;
+        }
+
+        // hitung umur
+        let umur = TahunSekarang - TahunLahir;
+        hasil.innerHTML = "Umur kamu sekarang adalah " + umur + " tahun.";
+        hasil.style.color = "black";
+    }
+  </script>
+</body>
